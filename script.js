@@ -39,6 +39,7 @@ function utilRoman(char, factor)
 function convertToRoman(s) {
   	// your code here
  let romanArray = [];
+	s = String(s);
   s = s.split('').reverse().join('');
   for(let i=0;i<s.length;i++)
   {
@@ -49,7 +50,7 @@ function convertToRoman(s) {
 }
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
 
-console.log(convertToRoman(36));
+// console.log(convertToRoman(36));
 
 
 
