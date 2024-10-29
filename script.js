@@ -12,7 +12,10 @@ function utilRoman(char, factor)
 {
     n =  Number(char);
     factor = Math.pow(10,factor);
-    if(n<=3) {return Array(n).fill(mask[1*factor])}
+    if(factor>=10000){
+       return [];
+    }else{
+         if(n<=3) {return Array(n).fill(mask[1*factor])}
     else if(n==4){
         let temp = [];
         temp[0] = mask[1 * factor];
@@ -34,26 +37,33 @@ function utilRoman(char, factor)
     }else {
         return Array(1).fill(mask[10*factor]);
     }
+    }
+   
 }
 
 function convertToRoman(s) {
   	// your code here
  let romanArray = [];
-	s = String(s);
+  s = String(s);
+  let sNumber = Number(s);
   s = s.split('').reverse().join('');
   for(let i=0;i<s.length;i++)
   {
    romanArray.push(utilRoman(s[i],i).join(''));
   }
-  return romanArray.reverse().join('');
-
+  romanArray = romanArray.reverse().join('');
+  let a = Math.floor(sNumber / 1000);
+  let count = 0;
+  for(let i=0;i<romanArray.length;i++) if(romanArray[i]=='M') count++;
+  a = a - count;
+ romanArray =  romanArray.split('');
+ romanArray.unshift(Array(a).fill('M'));
+  return romanArray.flat().join('');
+ 
 }
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
 
 // console.log(convertToRoman(36));
-
-
-
 
 // do not edit below this line
 module.exports = convertToRoman
