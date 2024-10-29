@@ -54,7 +54,10 @@ function convertToRoman(s) {
   romanArray = romanArray.reverse().join('');
   let a = Math.floor(sNumber / 1000);
   let count = 0;
-  for(let i=0;i<romanArray.length;i++) if(romanArray[i]=='M') count++;
+  for(let i=0;i<romanArray.length;i++) {
+	  if(romanArray[i]=='M') count++;
+	  else break;
+  }
   a = a - count;
  romanArray =  romanArray.split('');
   if(a>0) romanArray.unshift(Array(a).fill('M'));
