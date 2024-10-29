@@ -57,7 +57,7 @@ function convertToRoman(s) {
   for(let i=0;i<romanArray.length;i++) if(romanArray[i]=='M') count++;
   a = a - count;
  romanArray =  romanArray.split('');
- romanArray.unshift(Array(a).fill('M'));
+  if(a>0) romanArray.unshift(Array(a).fill('M'));
   return romanArray.flat().join('');
  
 }
